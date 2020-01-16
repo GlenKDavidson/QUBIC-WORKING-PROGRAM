@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QUBIC WORKING PROGRAM", "QUBIC WORKING PROGRAM\QUBIC WORKING PROGRAM.csproj", "{F046DC5B-E5E7-469B-BCDA-F45496068E2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F046DC5B-E5E7-469B-BCDA-F45496068E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F046DC5B-E5E7-469B-BCDA-F45496068E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F046DC5B-E5E7-469B-BCDA-F45496068E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F046DC5B-E5E7-469B-BCDA-F45496068E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E231FD87-286B-4DDF-AE7A-3FCD574D4573}
+	EndGlobalSection
+EndGlobal
