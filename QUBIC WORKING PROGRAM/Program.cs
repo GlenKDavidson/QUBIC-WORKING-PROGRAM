@@ -17,6 +17,9 @@ namespace QUBIC_WORKING_PROGRAM
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            Game qubic = new Game();
+            qubic.start();
         }
     }
 }

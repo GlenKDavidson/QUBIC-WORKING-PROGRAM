@@ -49,10 +49,65 @@ namespace QUBIC_WORKING_PROGRAM
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button43_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button39_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button64_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button63_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button58_Click(object sender, EventArgs e)
         {
 
         }

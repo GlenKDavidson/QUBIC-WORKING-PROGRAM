@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,63 +8,36 @@ namespace QUBIC_WORKING_PROGRAM
 {
     class Game
     {
-        public node root = null;
-        public node temp = null;
-        Boolean sort = false;
-        public void Add(String input)
+        Board board;
+        Player[] p;
+        Boolean turn;
+
+
+        public Game()
         {
-            if (root == null)
-            {
-                root = new node
-                {
-                    name = input
-
-                };
-            }
-            else
-            {
-                temp = root;
-                sort = false;
-                while (!sort)
-                {
-                    if (temp.left == null)
-                    {
-                        if (temp.name.CompareTo(input) >= 1)
-                        {
-                            temp.left = new node
-                            {
-                                name = input
-                            };
-                            sort = true;
-                        }
-
-
-                    }
-                    else if (temp.name.CompareTo(input) >= 1)
-                    {
-                        temp = temp.left;
-
-                    }
-
-                    else if (temp.right == null)
-                    {
-                        if (temp.name.CompareTo(input) < 1)
-                        {
-                            temp.right = new node
-                            {
-                                name = input
-                            };
-                            sort = true;
-                        }
-                    }
-
-                    else if (temp.name.CompareTo(input) < 1)
-                    {
-                        temp = temp.right;
-                    }
-                }
-            }
+            board = new Board();
+            p = new Player[2];
+            p[0] = new HumanPlayer();
+            p[1] = new HumanPlayer();
+            turn = true;
         }
 
+
+        public void getplayer() {
+          
+        }
+
+        public void start()
+        {
+             int moveCount = 0;
+            while (true)
+            {
+                p[moveCount++ % 2].move();
+                Console.WriteLine(moveCount);
+
+            }
+        }
     }
 }
+
+

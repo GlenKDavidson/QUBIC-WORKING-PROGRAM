@@ -8,7 +8,7 @@ namespace QUBIC_WORKING_PROGRAM
 {
     class Player
     {
-        Boolean turn;
+       
         string name;
 
         public void move()
