@@ -111,5 +111,10 @@ namespace QUBIC_WORKING_PROGRAM
         {
 
         }
+
+        private void Button50_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

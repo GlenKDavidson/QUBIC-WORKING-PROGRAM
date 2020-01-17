@@ -8,5 +8,13 @@ namespace QUBIC_WORKING_PROGRAM
 {
     class AIPlayer : Player
     {
+
+
+
+
+        public override void move()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

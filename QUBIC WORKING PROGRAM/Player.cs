@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace QUBIC_WORKING_PROGRAM
 {
-    class Player
+    abstract class Player
     {
        
         string name;
+        int turnsTaken;
 
-        public void move()
-        {
-
-        }
+        public abstract Move move();
+      
 
     }
 }

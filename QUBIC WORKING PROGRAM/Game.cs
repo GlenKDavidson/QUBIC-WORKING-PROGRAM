@@ -10,7 +10,7 @@ namespace QUBIC_WORKING_PROGRAM
     {
         Board board;
         Player[] p;
-        Boolean turn;
+        int turn;
 
 
         public Game()
@@ -19,12 +19,12 @@ namespace QUBIC_WORKING_PROGRAM
             p = new Player[2];
             p[0] = new HumanPlayer();
             p[1] = new HumanPlayer();
-            turn = true;
+            turn = 1;
         }
 
 
-        public void getplayer() {
-          
+        public void checkplayer() {
+            board.plotpiece(p[turn % 2].move(), turn%2);
         }
 
         public void start()
