@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace QUBIC_WORKING_PROGRAM
 {
-    class AIPlayer : Player
+   class AIPlayer : Player
     {
 
 
 
 
-        public override void move()
+        public override int move(Board board)
         {
-            throw new NotImplementedException();
-        }
+            Console.WriteLine("aiplayer");
+            return 211;
+        }   
+      }
     }
-}

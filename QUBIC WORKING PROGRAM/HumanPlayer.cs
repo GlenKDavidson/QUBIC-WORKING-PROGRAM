@@ -11,13 +11,10 @@ namespace QUBIC_WORKING_PROGRAM
     {
 
 
-        public override Move move()
+        public  override int move(Board board)
         {
-            Move move = new Move();
-            
-            
-                
-            
+            Console.WriteLine("humanplayer");
+            return 1;
         }
     }
 }

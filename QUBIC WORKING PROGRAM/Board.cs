@@ -27,6 +27,8 @@ namespace QUBIC_WORKING_PROGRAM
             }
         }
 
+     
+
         public int turncount(int turns)
         {
             return turns++;
@@ -49,6 +51,9 @@ namespace QUBIC_WORKING_PROGRAM
             }
             turns++;
         }
+
+        
     }
+    
 
 }

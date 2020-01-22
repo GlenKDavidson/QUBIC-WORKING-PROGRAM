@@ -19,7 +19,9 @@ namespace QUBIC_WORKING_PROGRAM
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
+       
+           
+            
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -33,6 +35,16 @@ namespace QUBIC_WORKING_PROGRAM
         }
 
         private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
         {
 
         }

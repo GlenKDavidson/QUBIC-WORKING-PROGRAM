@@ -8,12 +8,14 @@ namespace QUBIC_WORKING_PROGRAM
 {
     abstract class Player
     {
-       
+
         string name;
         int turnsTaken;
 
-        public abstract Move move();
-      
+        public abstract int move(Board board);
+           
+        
+    
 
     }
 }
