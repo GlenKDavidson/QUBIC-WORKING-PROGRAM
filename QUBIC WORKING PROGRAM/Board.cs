@@ -29,15 +29,24 @@ namespace QUBIC_WORKING_PROGRAM
 
 
 
-        
+
         public Boolean checkwin()
         {
             return true;
         }
 
-        public Boolean validmove()
+        public Boolean validmove(Move checkedmove)
         {
-            return true;
+            if (playfield[checkedmove.x - 1, checkedmove.y - 1, checkedmove.z - 1] != 0)
+            {
+                Console.WriteLine("INVALID");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("VALID");
+                return true;
+            }
         }
 
         public void plotpiece(Move move, int cplayer)
@@ -45,13 +54,13 @@ namespace QUBIC_WORKING_PROGRAM
             if (cplayer == 1)
             {
 
-                playfield[move.x -1, move.y -1, move.z-1] = 15;
+                playfield[move.x - 1, move.y - 1, move.z - 1] = 15;
             }
             else
             {
-                playfield[move.x -1, move.y-1, move.z-1] = 1;
+                playfield[move.x - 1, move.y - 1, move.z - 1] = 1;
             }
-          
+
         }
 
 

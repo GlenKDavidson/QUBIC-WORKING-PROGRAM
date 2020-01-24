@@ -50,19 +50,20 @@ namespace QUBIC_WORKING_PROGRAM
 
                 currentplayer = qubic.checkplayer(location);
 
-            }
 
 
-            
-            if ((b.BackColor == Color.Gray) &&  qubic.validmove())
-            {
-                if (currentplayer == 1)
+
+
+                if ((b.BackColor == Color.Gray) && qubic.validmove(location))
                 {
-                    b.BackColor = Color.Blue;
-                }
-                else
-                {
-                    b.BackColor = Color.Red;
+                    if (currentplayer == 1)
+                    {
+                        b.BackColor = Color.Blue;
+                    }
+                    else
+                    {
+                        b.BackColor = Color.Red;
+                    }
                 }
             }
         }

@@ -28,9 +28,9 @@ namespace QUBIC_WORKING_PROGRAM
 
         }
 
-        public Boolean validmove()
+        public Boolean validmove(Move checkedMove)
         {
-            return board.validmove();
+            return board.validmove(checkedMove);
         }
         public Boolean checkwin()
         {
@@ -43,7 +43,7 @@ namespace QUBIC_WORKING_PROGRAM
             if (p[turn % 2].move(board) == 1)
             {
                 Console.WriteLine("Human Player");
-                if (board.validmove())
+                if (board.validmove(location))
                 {
                     board.plotpiece(location, turn % 2);
                     turn++;  //increment turn after valid human move
