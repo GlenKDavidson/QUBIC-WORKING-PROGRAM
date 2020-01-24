@@ -16,5 +16,9 @@ namespace QUBIC_WORKING_PROGRAM
             Console.WriteLine("humanplayer");
             return 1;
         }
+        public override Move minimax(Board board)
+        {
+            return null;
+        }
     }
 }

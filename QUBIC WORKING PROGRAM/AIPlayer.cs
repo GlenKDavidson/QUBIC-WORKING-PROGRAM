@@ -15,7 +15,17 @@ namespace QUBIC_WORKING_PROGRAM
         public override int move(Board board)
         {
             Console.WriteLine("aiplayer");
-            return 211;
-        }   
+            return 2;
+        }
+
+        public override Move minimax(Board board) {
+            Move optimal = new Move();
+            optimal.x = 1;
+            optimal.y = 2;
+            optimal.z = 3;
+
+            return optimal;
+        }
+
       }
     }

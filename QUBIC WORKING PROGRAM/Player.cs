@@ -13,9 +13,9 @@ namespace QUBIC_WORKING_PROGRAM
         int turnsTaken;
 
         public abstract int move(Board board);
-           
-        
-    
+
+        public abstract Move minimax(Board board);
+
 
     }
 }

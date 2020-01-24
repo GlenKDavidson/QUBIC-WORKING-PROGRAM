@@ -10,7 +10,7 @@ namespace QUBIC_WORKING_PROGRAM
     {
 
         int[,,] playfield;
-        int turns = 0;
+
         public Board()
         {
             playfield = new int[4, 4, 4];
@@ -27,13 +27,15 @@ namespace QUBIC_WORKING_PROGRAM
             }
         }
 
-     
 
-        public int turncount(int turns)
-        {
-            return turns++;
-        }
+
+        
         public Boolean checkwin()
+        {
+            return true;
+        }
+
+        public Boolean validmove()
         {
             return true;
         }
@@ -43,17 +45,17 @@ namespace QUBIC_WORKING_PROGRAM
             if (cplayer == 1)
             {
 
-                playfield[move.x, move.y, move.z] = 15;
+                playfield[move.x -1, move.y -1, move.z-1] = 15;
             }
             else
             {
-                playfield[move.x, move.y, move.z] = 1;
+                playfield[move.x -1, move.y-1, move.z-1] = 1;
             }
-            turns++;
+          
         }
 
-        
+
     }
-    
+
 
 }

@@ -13,7 +13,7 @@ namespace QUBIC_WORKING_PROGRAM
     public partial class Form1 : Form
     {
         Game qubic;
-
+        int currentplayer;
         public Form1()
         {
 
@@ -36,10 +36,7 @@ namespace QUBIC_WORKING_PROGRAM
         {
 
             Button b = (Button)sender;
-            if (b.BackColor == Color.Gray)
-            {
-                b.BackColor = Color.Red;
-            }
+
 
             string buttonname = Convert.ToString(b.Name[0]);
 
@@ -50,9 +47,23 @@ namespace QUBIC_WORKING_PROGRAM
                 location.x = (Convert.ToInt32(b.Text[0]) - 48);
                 location.y = (Convert.ToInt32(b.Text[2]) - 48);
                 location.z = (Convert.ToInt32(b.Text[4]) - 48);
-                
-                qubic.checkplayer(location);
 
+                currentplayer = qubic.checkplayer(location);
+
+            }
+
+
+            
+            if ((b.BackColor == Color.Gray) &&  qubic.validmove())
+            {
+                if (currentplayer == 1)
+                {
+                    b.BackColor = Color.Blue;
+                }
+                else
+                {
+                    b.BackColor = Color.Red;
+                }
             }
         }
         private void Button8_Click(object sender, EventArgs e)
