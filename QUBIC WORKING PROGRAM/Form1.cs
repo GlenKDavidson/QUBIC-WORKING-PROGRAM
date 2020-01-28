@@ -34,27 +34,21 @@ namespace QUBIC_WORKING_PROGRAM
 
         private void buttonClicked(object sender, MouseEventArgs args)
         {
-
             Button b = (Button)sender;
-
-
             string buttonname = Convert.ToString(b.Name[0]);
-
 
             if (buttonname != "z")
             {
+
                 Move location = new Move();
                 location.x = (Convert.ToInt32(b.Text[0]) - 48);
                 location.y = (Convert.ToInt32(b.Text[2]) - 48);
                 location.z = (Convert.ToInt32(b.Text[4]) - 48);
 
+                Boolean validmove = qubic.validmove(location);
                 currentplayer = qubic.checkplayer(location);
 
-
-
-
-
-                if ((b.BackColor == Color.Gray) && qubic.validmove(location))
+                if ((b.BackColor == Color.Gray) && validmove)
                 {
                     if (currentplayer == 1)
                     {
@@ -64,6 +58,15 @@ namespace QUBIC_WORKING_PROGRAM
                     {
                         b.BackColor = Color.Red;
                     }
+                }
+
+                if (qubic.checkwin(location))
+                {
+                    MessageBox.Show("GAME WON: ");
+                }
+                else
+                {
+               
                 }
             }
         }
