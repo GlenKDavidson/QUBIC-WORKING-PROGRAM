@@ -39,107 +39,36 @@ namespace QUBIC_WORKING_PROGRAM
 
             Boolean validSame = false;
             Boolean validAcross = false;
-            
 
-            //  if (piecesOnEachBoard[cplayer, checkedmove.z - 1] >= 3)
-            // {
+            cplayer++;
+           
             validSame = true;
-            //  }
-            //  if ((piecesOnEachBoard[cplayer, 0] >= 1) && (piecesOnEachBoard[cplayer, 1] >= 1) && (piecesOnEachBoard[cplayer, 2] >= 1) && (piecesOnEachBoard[cplayer, 3] >= 1))
-            //  {
             validAcross = true;
-            //}
-
+            Boolean winning = true;
 
             //check same x
             if (validSame)
             {
-                
+
                 for (int x = 0; x < 4; x++)
                 {
-                    playfield[x,checkedmove.y - 1,  checkedmove.z - 1];
-                }
-                
-            }
-            //check same y
-            if (validSame)
-            {
-                int winningmove = 0;
-                for (int x = 0; x < 4; x++)
-                {
-                    winningmove += playfield[checkedmove.x - 1, x, checkedmove.z - 1];
-                    if (winningmove % criticalValue != 0)
+                    if (playfield[x, checkedmove.y - 1, checkedmove.z - 1] == cplayer)
                     {
-                        Console.WriteLine("X:" + x + "Total number" + winningmove);
-                        Console.WriteLine("LOOP BROKEN");
+                        Console.Write(x);
+                    }
+                    else
+                    {
+                        winning = false;
                         break;
                     }
-                    Console.WriteLine("Total number" + winningmove);
-                    if (winningmove == (4 * criticalValue))
+                    if ((x == 3) && (winning = true))
                     {
-                        Console.WriteLine(criticalValue);
                         return true;
                     }
-                }
-
-            }
-            //check same z
-            if (validAcross)
-            {
-                int winningmove = 0;
-                for (int x = 0; x < 4; x++)
-                {
-                    winningmove += playfield[checkedmove.x - 1, checkedmove.y - 1, x];
-                    if (winningmove % criticalValue != 0)
-                    {
-                        Console.WriteLine("X:" + x + "Total number" + winningmove);
-                        Console.WriteLine("LOOP BROKEN");
-                        break;
-                    }
-                    Console.WriteLine("Total number" + winningmove);
-                    if (winningmove == (4 * criticalValue))
-                    {
-                        Console.WriteLine(criticalValue);
-                        return true;
-                    }
-                }
-
-            }
-            //check one board diagonal
-            if (validSame)
-            {
-                int winningmove = 0;
-                for (int x = 0; x < 4; x++)
-                {
 
                 }
             }
-            //check four boards same x diagonal
-            if (validAcross)
-            {
-                int winningmove = 0;
-                for (int x = 0; x < 4; x++)
-                {
-
-                }
-            }
-            //check four boards same y diagonal
-            if (validAcross)
-            {
-                int winningmove = 0;
-                for (int x = 0; x < 4; x++)
-                {
-
-                }
-            }
-            //check four boards full diagonal
-            if (validAcross)
-            {
-                int winningmove = 0;
-                for (int x = 0; x < 4; x++)
-                {
-                }
-            }
+           
 
 
             return false;
