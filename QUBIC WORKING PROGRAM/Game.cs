@@ -45,7 +45,7 @@ namespace QUBIC_WORKING_PROGRAM
                 Console.WriteLine("Human Player");
                 if (board.validmove(location))
                 {
-                    board.plotpiece(location, turn % 2);
+                    board.plotpiece(location, turn %    2);
                     turn++;  //increment turn after valid human move
                 }
 
@@ -58,7 +58,7 @@ namespace QUBIC_WORKING_PROGRAM
                 Console.WriteLine("AI Player");
                 turn++; //increment turn after AI move
             }
-            return turn % 2;
+            return (turn-1) % 2;
         }
 
 

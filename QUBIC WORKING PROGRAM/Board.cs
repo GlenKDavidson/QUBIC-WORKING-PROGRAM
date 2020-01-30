@@ -39,12 +39,20 @@ namespace QUBIC_WORKING_PROGRAM
 
             Boolean validSame = false;
             Boolean validAcross = false;
-
-            cplayer++;
-           
             validSame = true;
             validAcross = true;
             Boolean winning = true;
+
+            if (cplayer == 0)
+            {
+                cplayer = 2;
+            }
+            else
+            {
+                cplayer = 1;
+            }
+
+
 
             //check same x
             if (validSame)
@@ -61,14 +69,37 @@ namespace QUBIC_WORKING_PROGRAM
                         winning = false;
                         break;
                     }
-                    if ((x == 3) && (winning = true))
+                    if ((x == 3) && (winning == true))
                     {
                         return true;
                     }
 
                 }
             }
-           
+            winning = true;
+            //check same y
+            if (validSame)
+            {
+
+                for (int x = 0; x < 4; x++)
+                {
+                    if (playfield[checkedmove.x - 1, x, checkedmove.z - 1] == cplayer)
+                    {
+                        Console.Write(x);
+                    }
+                    else
+                    {
+                        winning = false;
+                        break;
+                    }
+                    if ((x == 3) && (winning == true))
+                    {
+                        return true;
+                    }
+
+                }
+            }
+
 
 
             return false;

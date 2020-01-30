@@ -95,12 +95,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.zTwoPlayer = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.zTutorial = new System.Windows.Forms.Button();
-            this.zScores = new System.Windows.Forms.Button();
-            this.zSinglePlayer = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -698,6 +695,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(56, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 31);
@@ -709,6 +707,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(260, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 31);
@@ -719,7 +718,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Blue;
             this.label3.Location = new System.Drawing.Point(464, 218);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 31);
@@ -727,76 +728,52 @@
             this.label3.Text = "Board 3";
             this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(670, 320);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 31);
-            this.label4.TabIndex = 69;
-            this.label4.Text = "Board 4";
-            // 
-            // zTwoPlayer
-            // 
-            this.zTwoPlayer.Location = new System.Drawing.Point(813, 123);
-            this.zTwoPlayer.Name = "zTwoPlayer";
-            this.zTwoPlayer.Size = new System.Drawing.Size(186, 58);
-            this.zTwoPlayer.TabIndex = 74;
-            this.zTwoPlayer.Text = "Play Two Player Game";
-            this.zTwoPlayer.UseVisualStyleBackColor = true;
-            this.zTwoPlayer.Click += new System.EventHandler(this.Button65_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(915, 0);
+            this.label5.ForeColor = System.Drawing.Color.Blue;
+            this.label5.Location = new System.Drawing.Point(566, 81);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 31);
             this.label5.TabIndex = 73;
             this.label5.Text = "Qubic";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
-            // zTutorial
+            // label6
             // 
-            this.zTutorial.Location = new System.Drawing.Point(813, 271);
-            this.zTutorial.Name = "zTutorial";
-            this.zTutorial.Size = new System.Drawing.Size(186, 58);
-            this.zTutorial.TabIndex = 72;
-            this.zTutorial.Text = "View Tutorial";
-            this.zTutorial.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Blue;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label6.Location = new System.Drawing.Point(58, 518);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(520, 20);
+            this.label6.TabIndex = 75;
+            this.label6.Text = "When Playing An AI Game Press Any Board Square To Initialise AI Move";
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
-            // zScores
+            // label4
             // 
-            this.zScores.Location = new System.Drawing.Point(813, 197);
-            this.zScores.Name = "zScores";
-            this.zScores.Size = new System.Drawing.Size(186, 58);
-            this.zScores.TabIndex = 71;
-            this.zScores.Text = "View Scores";
-            this.zScores.UseVisualStyleBackColor = true;
-            // 
-            // zSinglePlayer
-            // 
-            this.zSinglePlayer.Location = new System.Drawing.Point(23, 469);
-            this.zSinglePlayer.Name = "zSinglePlayer";
-            this.zSinglePlayer.Size = new System.Drawing.Size(186, 58);
-            this.zSinglePlayer.TabIndex = 70;
-            this.zSinglePlayer.Text = "Play Single Player Game";
-            this.zSinglePlayer.UseVisualStyleBackColor = true;
-            this.zSinglePlayer.Click += new System.EventHandler(this.Button68_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(670, 317);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 31);
+            this.label4.TabIndex = 76;
+            this.label4.Text = "Board 4";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1069, 583);
-            this.Controls.Add(this.zTwoPlayer);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.zTutorial);
-            this.Controls.Add(this.zScores);
-            this.Controls.Add(this.zSinglePlayer);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(831, 562);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -941,11 +918,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button zTwoPlayer;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button zTutorial;
-        private System.Windows.Forms.Button zScores;
-        private System.Windows.Forms.Button zSinglePlayer;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -19,9 +19,10 @@ namespace QUBIC_WORKING_PROGRAM
 
         private void Button1_Click(object sender, EventArgs e)
         {
-       
-           
-            
+            this.Hide();
+            Form gameboard = new Form1();
+            gameboard.Show();
+
         }
 
         private void Button3_Click(object sender, EventArgs e)

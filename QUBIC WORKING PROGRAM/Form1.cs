@@ -14,9 +14,10 @@ namespace QUBIC_WORKING_PROGRAM
     {
         Game qubic;
         int currentplayer;
+
         public Form1()
         {
-
+            qubic = new Game();
             InitializeComponent();
 
             foreach (Control c in this.Controls)
@@ -37,39 +38,38 @@ namespace QUBIC_WORKING_PROGRAM
             Button b = (Button)sender;
             string buttonname = Convert.ToString(b.Name[0]);
 
-            if (buttonname != "z")
+
+
+            Move location = new Move();
+            location.x = (Convert.ToInt32(b.Text[0]) - 48);
+            location.y = (Convert.ToInt32(b.Text[2]) - 48);
+            location.z = (Convert.ToInt32(b.Text[4]) - 48);
+ 
+            Boolean validmove = qubic.validmove(location);
+           currentplayer  = qubic.checkplayer(location) ;
+
+            if ((b.BackColor == Color.Black) && validmove)
             {
-
-                Move location = new Move();
-                location.x = (Convert.ToInt32(b.Text[0]) - 48);
-                location.y = (Convert.ToInt32(b.Text[2]) - 48);
-                location.z = (Convert.ToInt32(b.Text[4]) - 48);
-
-                Boolean validmove = qubic.validmove(location);
-                currentplayer = qubic.checkplayer(location);
-
-                if ((b.BackColor == Color.Gray) && validmove)
+                if (currentplayer == 1) //blue is player 2
                 {
-                    if (currentplayer == 1)
-                    {
-                        b.BackColor = Color.Blue;
-                    }
-                    else
-                    {
-                        b.BackColor = Color.Red;
-                    }
-                }
-
-                if (qubic.checkwin(location))
-                {
-                    MessageBox.Show("GAME WON: ");
+                    b.BackColor = Color.Blue;
                 }
                 else
                 {
-               
+                    b.BackColor = Color.Red; //red is player 1
                 }
             }
+
+            if (qubic.checkwin(location))
+            {
+                MessageBox.Show("Player " + currentplayer + " Wins!");
+            }
+            else
+            {
+
+            }
         }
+
         private void Button8_Click(object sender, EventArgs e)
         {
 
@@ -168,9 +168,7 @@ namespace QUBIC_WORKING_PROGRAM
         public void Button68_Click(object sender, EventArgs e)
         {
 
-            qubic = new Game();
-            Button b = (Button)sender;
-            b.BackColor = Color.Green;
+          
         }
 
         private void Button16_Click(object sender, EventArgs e)
@@ -179,6 +177,16 @@ namespace QUBIC_WORKING_PROGRAM
         }
 
         private void Button65_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
         {
 
         }
