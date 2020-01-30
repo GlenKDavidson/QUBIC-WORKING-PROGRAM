@@ -18,6 +18,7 @@ namespace QUBIC_WORKING_PROGRAM
         public Form1()
         {
             qubic = new Game();
+
             InitializeComponent();
 
             foreach (Control c in this.Controls)
@@ -44,9 +45,9 @@ namespace QUBIC_WORKING_PROGRAM
             location.x = (Convert.ToInt32(b.Text[0]) - 48);
             location.y = (Convert.ToInt32(b.Text[2]) - 48);
             location.z = (Convert.ToInt32(b.Text[4]) - 48);
- 
+
             Boolean validmove = qubic.validmove(location);
-           currentplayer  = qubic.checkplayer(location) ;
+            currentplayer = qubic.checkplayer(location);
 
             if ((b.BackColor == Color.Black) && validmove)
             {
@@ -62,7 +63,10 @@ namespace QUBIC_WORKING_PROGRAM
 
             if (qubic.checkwin(location))
             {
-                MessageBox.Show("Player " + currentplayer + " Wins!");
+                MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
+                this.Hide();
+                Form menu = new Form2();
+                menu.Show();
             }
             else
             {
@@ -168,7 +172,7 @@ namespace QUBIC_WORKING_PROGRAM
         public void Button68_Click(object sender, EventArgs e)
         {
 
-          
+
         }
 
         private void Button16_Click(object sender, EventArgs e)
