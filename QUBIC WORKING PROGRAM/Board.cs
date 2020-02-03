@@ -11,7 +11,7 @@ namespace QUBIC_WORKING_PROGRAM
 
         int[,,] playfield;
         int[,] piecesOnEachBoard;
-
+        Move lastmove = null;
         public Board()
         {
             playfield = new int[4, 4, 4];
@@ -30,7 +30,10 @@ namespace QUBIC_WORKING_PROGRAM
 
         }
 
-
+        public Move getlastmove()
+        {
+            return lastmove;
+        }
 
         public Boolean checkwin(Move checkedmove, int cplayer)
         {
@@ -274,6 +277,7 @@ namespace QUBIC_WORKING_PROGRAM
 
                 }
             }
+
             winning = true;
             //check same x different y,z - up boards
             if (validSame)
@@ -293,13 +297,14 @@ namespace QUBIC_WORKING_PROGRAM
 
                 }
             }
+
             winning = true;
             //check same x different y,z - down boards
             if (validSame)
             {
                 for (int x = 0; x < 4; x++)
                 {
-                    if (!(playfield[checkedmove.x - 1, x,3- x] == cplayer))
+                    if (!(playfield[checkedmove.x - 1, x, 3 - x] == cplayer))
                     {
                         winning = false;
                         break;
@@ -312,25 +317,7 @@ namespace QUBIC_WORKING_PROGRAM
 
                 }
             }
-            winning = true;
-            //check same x different y,z - up boards
-            if (validSame)
-            {
-                for (int x = 0; x < 4; x++)
-                {
-                    if (!(playfield[checkedmove.x - 1, x, x] == cplayer))
-                    {
-                        winning = false;
-                        break;
-                    }
-                    if ((x == 3) && (winning == true))
-                    {
-                        Console.WriteLine("SAME Y Z ");
-                        return true;
-                    }
 
-                }
-            }
             return false;
         }
 
@@ -355,14 +342,14 @@ namespace QUBIC_WORKING_PROGRAM
 
                 playfield[move.x - 1, move.y - 1, move.z - 1] = 2;
                 piecesOnEachBoard[cplayer, move.z - 1]++;
-
+                lastmove = move;
             }
             else
             {
 
                 playfield[move.x - 1, move.y - 1, move.z - 1] = 1;
                 piecesOnEachBoard[cplayer, move.z - 1]++;
-
+                lastmove = move;
             }
 
         }

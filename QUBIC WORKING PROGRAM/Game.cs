@@ -17,15 +17,23 @@ namespace QUBIC_WORKING_PROGRAM
 
         Move AIMoveHold = new Move();
 
-        public Game()
+        public Game(int a)
         {
             Console.WriteLine("x");
             board = new Board();
             p = new Player[2];
             p[0] = new HumanPlayer();
-            p[1] = new HumanPlayer();
+            if (a == 1)
+            {
+                p[1] = new HumanPlayer();
+            }
+            else p[1] = new AIPlayer();
             turn = 0;
 
+        }
+        public Move getlastmove()
+        {
+            return board.getlastmove();
         }
 
         public Boolean validmove(Move checkedMove)
@@ -42,7 +50,7 @@ namespace QUBIC_WORKING_PROGRAM
         {
             if (p[turn % 2].move(board) == 1)
             {
-                
+
                 if (board.validmove(location))
                 {
                     board.plotpiece(location, turn % 2);
@@ -55,7 +63,7 @@ namespace QUBIC_WORKING_PROGRAM
             {
                 AIMoveHold = p[turn % 2].minimax(board);
                 board.plotpiece(AIMoveHold, turn % 2);
-                
+
                 turn++; //increment turn after AI move
             }
             return (turn - 1) % 2;

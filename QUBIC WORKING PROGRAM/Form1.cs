@@ -15,9 +15,9 @@ namespace QUBIC_WORKING_PROGRAM
         Game qubic;
         int currentplayer;
 
-        public Form1()
+        public Form1(int a)
         {
-            qubic = new Game();
+            qubic = new Game(a);
 
             InitializeComponent();
 
@@ -48,6 +48,7 @@ namespace QUBIC_WORKING_PROGRAM
 
             Boolean validmove = qubic.validmove(location);
             currentplayer = qubic.checkplayer(location);
+
 
             if ((b.BackColor == Color.Black) && validmove)
             {
@@ -193,6 +194,16 @@ namespace QUBIC_WORKING_PROGRAM
         private void Label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button17_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void Button65_Click_1(object sender, EventArgs e)
+        {
+          
         }
     }
 }

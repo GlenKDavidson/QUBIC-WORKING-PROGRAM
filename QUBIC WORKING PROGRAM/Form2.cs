@@ -20,7 +20,7 @@ namespace QUBIC_WORKING_PROGRAM
         private void Button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form gameboard = new Form1();
+            Form gameboard = new Form1(0);
             gameboard.Show();
 
         }
@@ -43,11 +43,14 @@ namespace QUBIC_WORKING_PROGRAM
         private void Button2_Click(object sender, EventArgs e)
         {
 
+
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Form gameboard = new Form1(1);
+            gameboard.Show();
         }
     }
 }
