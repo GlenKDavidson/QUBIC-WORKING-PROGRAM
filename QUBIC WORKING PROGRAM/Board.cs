@@ -341,7 +341,9 @@ namespace QUBIC_WORKING_PROGRAM
             {
 
                 playfield[move.x - 1, move.y - 1, move.z - 1] = 2;
-                piecesOnEachBoard[cplayer, move.z - 1]++;
+                     piecesOnEachBoard[cplayer, move.z - 1]++;
+                
+
                 lastmove = move;
             }
             else
