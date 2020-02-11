@@ -54,20 +54,16 @@ namespace QUBIC_WORKING_PROGRAM
         {
             if (p[turn % 2].move(board) == 1)
             {
-
                 if (board.validmove(location))
                 {
                     board.plotpiece(location, turn % 2);
                     turn++;  //increment turn after valid human move
                 }
-
-
             }
             else
             {
                 AIMoveHold = p[turn % 2].minimax(board);
                 board.plotpiece(AIMoveHold, turn % 2);
-
                 turn++; //increment turn after AI move
             }
             return (turn - 1) % 2;
@@ -75,18 +71,11 @@ namespace QUBIC_WORKING_PROGRAM
 
 
 
-        public Move checkplayer()
+        public Move getaimove()
         {
-            if (p[turn % 2].move(board) == 1)
-            {
-                return null;
-            }
-            else
-            {
-                return AIMoveHold;
-            }
-
+            return AIMoveHold;
         }
+
 
     }
 }

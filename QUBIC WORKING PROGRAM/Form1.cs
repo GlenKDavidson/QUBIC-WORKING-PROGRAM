@@ -14,9 +14,11 @@ namespace QUBIC_WORKING_PROGRAM
     {
         Game qubic;
         int currentplayer;
-
+        int gametype = 0;
+        Boolean callformove = true;
         public Form1(int a)
         {
+            gametype = a;
             qubic = new Game(a);
 
             InitializeComponent();
@@ -36,42 +38,60 @@ namespace QUBIC_WORKING_PROGRAM
 
         private void buttonClicked(object sender, MouseEventArgs args)
         {
+            Move location = new Move();
             Button b = (Button)sender;
             string buttonname = Convert.ToString(b.Name[0]);
 
-
-
-            Move location = new Move();
-            location.x = (Convert.ToInt32(b.Text[0]) - 48);
-            location.y = (Convert.ToInt32(b.Text[2]) - 48);
-            location.z = (Convert.ToInt32(b.Text[4]) - 48);
-
-            Boolean validmove = qubic.validmove(location);
-            currentplayer = qubic.checkplayer(location);
-
-
-            if ((b.BackColor == Color.Black) && validmove)
+            if (callformove && buttonname != "A")
             {
-                if (currentplayer == 1) //blue is player 2
+
+
+                location.x = (Convert.ToInt32(b.Text[0]) - 48);
+                location.y = (Convert.ToInt32(b.Text[2]) - 48);
+                location.z = (Convert.ToInt32(b.Text[4]) - 48);
+
+                Boolean validmove = qubic.validmove(location);
+                currentplayer = qubic.checkplayer(location);
+
+                if (gametype == 0)
                 {
-                    b.BackColor = Color.Blue;
+                    b.BackColor = Color.Red;
                 }
-                else
+                else if ((b.BackColor == Color.Black) && validmove)
                 {
-                    b.BackColor = Color.Red; //red is player 1
+                    if (currentplayer == 1) //blue is player 2
+                    {
+                        b.BackColor = Color.Blue;
+                    }
+                    else
+                    {
+                        b.BackColor = Color.Red; //red is player 1
+                    }
                 }
-            }
 
-            if (qubic.checkwin(location))
-            {
-                MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
-                this.Hide();
-                Form menu = new Form2();
-                menu.Show();
-            }
-            else
-            {
+                if (qubic.checkwin(location))
+                {
+                    MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
+                    this.Hide();
+                    Form menu = new Form2();
+                    menu.Show();
+                }
+                if (gametype == 0)
+                {
+                    callformove = false;
+                }
 
+
+            }
+            else if (!callformove && buttonname == "A")
+            {
+                MessageBox.Show("AIBUTTON");
+                callformove = true;
+                location = qubic.getaimove();
+                switch (switch_on)
+                {
+                    default:
+                }
             }
         }
 
@@ -198,12 +218,17 @@ namespace QUBIC_WORKING_PROGRAM
 
         private void Button17_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void Button65_Click_1(object sender, EventArgs e)
         {
-          
+
+        }
+
+        private void Button65_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
