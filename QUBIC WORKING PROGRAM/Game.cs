@@ -38,11 +38,15 @@ namespace QUBIC_WORKING_PROGRAM
 
         public Boolean validmove(Move checkedMove)
         {
+            if (checkedMove.x == -1)
+            {
+                return false;
+            }
             return board.validmove(checkedMove);
         }
         public Boolean checkwin(Move checkMove)
         {
-            return board.checkwin(checkMove, turn % 2);
+            return board.checkwin(checkMove, AIMoveHold, turn % 2);
         }
 
         //check the type of current player, give the form the correct colour player, check move is valid, plot if valid
