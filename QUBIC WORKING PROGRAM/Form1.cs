@@ -14,13 +14,13 @@ namespace QUBIC_WORKING_PROGRAM
     {
         Game qubic;
         int currentplayer;
-        int gametype = 0;
+        Boolean gametype;
         Boolean callformove = true;
         public Form1(int a)
         {
-            gametype = a;
-            qubic = new Game(a);
 
+            qubic = new Game(a);
+            gametype = qubic.getGametype();
             InitializeComponent();
 
             foreach (Control c in this.Controls)
@@ -28,71 +28,85 @@ namespace QUBIC_WORKING_PROGRAM
                 try
                 {
                     Button b = (Button)c;
-                    b.MouseClick += new MouseEventHandler(buttonClicked);
+
+
+                    b.MouseClick += new MouseEventHandler(moveMake);
+
+                   
+
                 }
                 catch
                 {
                 }
             }
         }
+        private void aiMOVE()
+        {
+            callformove = true;
 
-        private void buttonClicked(object sender, MouseEventArgs args)
+        }
+
+        private void moveMake(object sender, MouseEventArgs args)
         {
             Move location = new Move();
             Button b = (Button)sender;
             string buttonname = Convert.ToString(b.Name[0]);
 
-            if (callformove && buttonname != "A")
+            if ((buttonname == "O" || buttonname == "Q" || buttonname == "R" || buttonname == "P"))
             {
+                MessageBox.Show("coordinate pressed");
 
 
-                location.x = (Convert.ToInt32(b.Text[0]) - 48);
-                location.y = (Convert.ToInt32(b.Text[2]) - 48);
-                location.z = (Convert.ToInt32(b.Text[4]) - 48);
 
-                Boolean validmove = qubic.validmove(location);
-                currentplayer = qubic.checkplayer(location);
 
-                if (gametype == 0)
+                if (callformove)
                 {
-                    b.BackColor = Color.Red;
-                }
-                else if ((b.BackColor == Color.Black) && validmove)
-                {
-                    if (currentplayer == 1) //blue is player 2
+
+
+                    location.x = (Convert.ToInt32(b.Text[0]) - 48);
+                    location.y = (Convert.ToInt32(b.Text[2]) - 48);
+                    location.z = (Convert.ToInt32(b.Text[4]) - 48);
+
+                    Boolean validmove = qubic.validmove(location);
+                    currentplayer = qubic.actingplayer();
+
+
+                    if (gametype == true && b.BackColor == Color.Black && validmove)
                     {
-                        b.BackColor = Color.Blue;
+                        b.BackColor = Color.Red;
                     }
-                    else
+                    else if ((b.BackColor == Color.Black) && validmove)
                     {
-                        b.BackColor = Color.Red; //red is player 1
+                        if (currentplayer == 1) //blue is player 2
+                        {
+                            b.BackColor = Color.Blue;
+                        }
+                        else
+                        {
+                            b.BackColor = Color.Red; //red is player 1
+                        }
                     }
-                }
 
-                if (qubic.checkwin(location))
-                {
-                    MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
-                    this.Hide();
-                    Form menu = new Form2();
-                    menu.Show();
-                }
-                if (gametype == 0)
-                {
-                    callformove = false;
-                }
+                    if (qubic.checkwin(location))
+                    {
+                        MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
+                        this.Hide();
+                        Form menu = new Form2();
+                        menu.Show();
+                    }
 
-
-            }
-            else if (!callformove && buttonname == "A")
-            {
-                MessageBox.Show("AIBUTTON");
-                callformove = true;
-                location = qubic.getaimove();
-                switch (switch_on)
-                {
-                    default:
+                    if (gametype == true)
+                    {
+                        callformove = false;
+                    }
                 }
             }
+            else if (buttonname == "A")
+            {
+                MessageBox.Show("aibuttonpressed");
+                aiMOVE();
+            }
+
         }
 
         private void Button8_Click(object sender, EventArgs e)

@@ -11,7 +11,8 @@ namespace QUBIC_WORKING_PROGRAM
 
         Player[] p;
         int turn;
-
+        Boolean gametype;
+        Move humanmove = new Move();
         Board board;
 
 
@@ -26,8 +27,13 @@ namespace QUBIC_WORKING_PROGRAM
             if (a == 1)
             {
                 p[1] = new HumanPlayer();
+                gametype = false;
             }
-            else p[1] = new AIPlayer();
+            else
+            {
+                p[1] = new AIPlayer();
+                gametype = true;
+            }
             turn = 0;
 
         }
@@ -48,29 +54,42 @@ namespace QUBIC_WORKING_PROGRAM
         {
             return board.checkwin(checkMove, AIMoveHold, turn % 2);
         }
+        public int actingplayer()
+        {
+            return turn % 2;
+        }
+
+        public Boolean getGametype()
+        {
+            return gametype;
+        }
 
         //check the type of current player, give the form the correct colour player, check move is valid, plot if valid
-        public int checkplayer(Move location)
+        public void makemove(Move location)
         {
-            if (p[turn % 2].move(board) == 1)
+
+            if (gametype && actingplayer() == 1)
+            {
+                p[actingplayer()].move(board, this);
+            }
+            else if (!gametype || (actingplayer() != 1))
             {
                 if (board.validmove(location))
                 {
-                    board.plotpiece(location, turn % 2);
-                    turn++;  //increment turn after valid human move
+                    humanmove = location;
+                    p[actingplayer()].move(board, this);
                 }
             }
-            else
-            {
-                AIMoveHold = p[turn % 2].minimax(board);
-                board.plotpiece(AIMoveHold, turn % 2);
-                turn++; //increment turn after AI move
-            }
-            return (turn - 1) % 2;
         }
 
-
-
+        public Move getlocation()
+        {
+            return humanmove;
+        }
+        public void setAIMove(Move move)
+        {
+            AIMoveHold = move;
+        }
         public Move getaimove()
         {
             return AIMoveHold;

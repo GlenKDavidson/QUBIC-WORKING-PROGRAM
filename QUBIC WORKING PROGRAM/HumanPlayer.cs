@@ -10,15 +10,13 @@ namespace QUBIC_WORKING_PROGRAM
     class HumanPlayer : Player
     {
 
-
-        public  override int move(Board board)
+        
+        public  override void move(Board board, Game qubic)
         {
+            
             Console.WriteLine("humanplayer");
-            return 1;
+            board.plotpiece(qubic.getlocation(), qubic.actingplayer());
         }
-        public override Move minimax(Board board)
-        {
-            return null;
-        }
+        
     }
 }

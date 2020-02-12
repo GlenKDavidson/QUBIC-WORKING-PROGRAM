@@ -11,13 +11,18 @@ namespace QUBIC_WORKING_PROGRAM
 
 
 
-        public override int move(Board board)
+        public override void move(Board board,Game qubic)
         {
+            Move aiMove = new Move();
             Console.WriteLine("aiplayer");
-            return 2;
+            aiMove = minimax(board);
+            qubic.setAIMove(aiMove);
+            board.plotpiece(aiMove,qubic.actingplayer());
+            
         }
 
-        public override Move minimax(Board board)
+        
+        public  Move minimax(Board board)
         {
             Board testee = new Board();
             testee = board;

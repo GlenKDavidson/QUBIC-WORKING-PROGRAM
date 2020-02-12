@@ -12,9 +12,9 @@ namespace QUBIC_WORKING_PROGRAM
         string name;
         int turnsTaken;
 
-        public abstract int move(Board board);
+        public abstract void move(Board board,Game qubic);
 
-        public abstract Move minimax(Board board);
+       
 
 
     }
