@@ -30,12 +30,14 @@ namespace QUBIC_WORKING_PROGRAM
 
         }
 
+        
+
         public Move getlastmove()
         {
             return lastmove;
         }
 
-        public Boolean checkwin(Move checkedmove, Move aimove, int cplayer)
+        public Boolean checkwin(Move checkedmove, int cplayer)
         {
             int y = 0;
             Boolean validSame = false;
@@ -52,12 +54,7 @@ namespace QUBIC_WORKING_PROGRAM
                 cplayer = 1;
             }
 
-            for (int i = 0; i < 2; i++)
-            {
-                if (i == 1)
-                {
-                    checkedmove = aimove;
-                }
+           
 
                 //check same y,z different x
                 Boolean winning = true;
@@ -314,7 +311,7 @@ namespace QUBIC_WORKING_PROGRAM
                         }
                     }
                 }
-            }
+            
             return false;
         }
 
@@ -328,6 +325,7 @@ namespace QUBIC_WORKING_PROGRAM
             else
             {
                 Console.WriteLine("VALID");
+                lastmove = checkedmove;
                 return true;
             }
         }
@@ -336,7 +334,7 @@ namespace QUBIC_WORKING_PROGRAM
         {
             playfield[move.x - 1, move.y - 1, move.z - 1] = cplayer + 1;
             piecesOnEachBoard[cplayer, move.z - 1]++;
-            lastmove = move;
+            
         }
 
 

@@ -32,7 +32,7 @@ namespace QUBIC_WORKING_PROGRAM
 
                     b.MouseClick += new MouseEventHandler(moveMake);
 
-                   
+
 
                 }
                 catch
@@ -43,7 +43,31 @@ namespace QUBIC_WORKING_PROGRAM
         private void aiMOVE()
         {
             callformove = true;
+            qubic.makemove();
 
+            Move move = new Move();
+            move = qubic.getaimove();
+
+
+            int z = move.z;
+            int x = move.x;
+            int y = move.y;
+
+            switch (z)
+            {
+                case 1:
+                    
+                case 2:
+
+                case 3:
+
+                case 4:
+
+
+
+
+                    break;
+            }
         }
 
         private void moveMake(object sender, MouseEventArgs args)
@@ -54,15 +78,8 @@ namespace QUBIC_WORKING_PROGRAM
 
             if ((buttonname == "O" || buttonname == "Q" || buttonname == "R" || buttonname == "P"))
             {
-                MessageBox.Show("coordinate pressed");
-
-
-
-
                 if (callformove)
                 {
-
-
                     location.x = (Convert.ToInt32(b.Text[0]) - 48);
                     location.y = (Convert.ToInt32(b.Text[2]) - 48);
                     location.z = (Convert.ToInt32(b.Text[4]) - 48);
@@ -70,35 +87,39 @@ namespace QUBIC_WORKING_PROGRAM
                     Boolean validmove = qubic.validmove(location);
                     currentplayer = qubic.actingplayer();
 
-
-                    if (gametype == true && b.BackColor == Color.Black && validmove)
+                    if (validmove)
                     {
-                        b.BackColor = Color.Red;
-                    }
-                    else if ((b.BackColor == Color.Black) && validmove)
-                    {
-                        if (currentplayer == 1) //blue is player 2
+                        qubic.makemove();
+                        if (gametype == true && b.BackColor == Color.Black)
                         {
-                            b.BackColor = Color.Blue;
+                            b.BackColor = Color.Red;
                         }
-                        else
+                        else if ((b.BackColor == Color.Black))
                         {
-                            b.BackColor = Color.Red; //red is player 1
+                            if (currentplayer == 1) //blue is player 2
+                            {
+                                b.BackColor = Color.Blue;
+                            }
+                            else
+                            {
+                                b.BackColor = Color.Red; //red is player 1
+                            }
                         }
+                        if (qubic.checkwin(location))
+                        {
+                            MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
+                            this.Hide();
+                            Form menu = new Form2();
+                            menu.Show();
+                        }
+
+                        if (gametype == true)
+                        {
+                            callformove = false;
+                        }
+
                     }
 
-                    if (qubic.checkwin(location))
-                    {
-                        MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
-                        this.Hide();
-                        Form menu = new Form2();
-                        menu.Show();
-                    }
-
-                    if (gametype == true)
-                    {
-                        callformove = false;
-                    }
                 }
             }
             else if (buttonname == "A")

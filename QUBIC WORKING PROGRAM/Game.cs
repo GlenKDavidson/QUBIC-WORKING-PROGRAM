@@ -48,11 +48,13 @@ namespace QUBIC_WORKING_PROGRAM
             {
                 return false;
             }
-            return board.validmove(checkedMove);
+            Boolean check = board.validmove(checkedMove);
+            humanmove = board.getlastmove();
+            return check;
         }
         public Boolean checkwin(Move checkMove)
         {
-            return board.checkwin(checkMove, AIMoveHold, turn % 2);
+            return board.checkwin(checkMove,turn % 2);
         }
         public int actingplayer()
         {
@@ -65,19 +67,21 @@ namespace QUBIC_WORKING_PROGRAM
         }
 
         //check the type of current player, give the form the correct colour player, check move is valid, plot if valid
-        public void makemove(Move location)
+        public void makemove()
         {
 
             if (gametype && actingplayer() == 1)
             {
                 p[actingplayer()].move(board, this);
+                turn++;
             }
             else if (!gametype || (actingplayer() != 1))
             {
-                if (board.validmove(location))
+                if (board.validmove(humanmove))
                 {
-                    humanmove = location;
+                    
                     p[actingplayer()].move(board, this);
+                    turn++;
                 }
             }
         }
@@ -95,6 +99,8 @@ namespace QUBIC_WORKING_PROGRAM
             return AIMoveHold;
         }
 
-
+        
+          
+        
     }
 }
