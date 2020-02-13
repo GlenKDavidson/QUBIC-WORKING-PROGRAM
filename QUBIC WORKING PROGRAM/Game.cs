@@ -86,6 +86,27 @@ namespace QUBIC_WORKING_PROGRAM
             }
         }
 
+        public void makemove1()
+        {
+
+            if (gametype && actingplayer() == 1)
+            {
+                p[actingplayer()].move(board, this);
+                turn++;
+            }
+            else if (!gametype || (actingplayer() != 1))
+            {
+                if (board.validmove(humanmove))
+                {
+
+                    p[actingplayer()].move(board, this);
+                    turn++;
+                }
+            }
+        }
+
+
+
         public Move getlocation()
         {
             return humanmove;
