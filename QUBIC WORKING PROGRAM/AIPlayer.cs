@@ -11,21 +11,21 @@ namespace QUBIC_WORKING_PROGRAM
 
 
 
-        public override void move(Board board,Game qubic)
+        public override void move(Board board, Game qubic)
         {
             Move aiMove = new Move();
             Console.WriteLine("aiplayer");
-            aiMove = minimax(board);
+            aiMove = minimax(board, qubic);
             qubic.setAIMove(aiMove);
-            board.plotpiece(aiMove,qubic.actingplayer());
-            
+            board.plotpiece(aiMove, qubic.actingplayer());
+
         }
 
-        
-        public  Move minimax(Board board)
+
+        public Move minimax(Board board, Game qubic)
         {
-            Board testee = new Board();
-            testee = board;
+
+
             Move optimal = new Move();
             optimal.x = -1;
             optimal.y = -1;
@@ -33,62 +33,70 @@ namespace QUBIC_WORKING_PROGRAM
             Move tester = new Move();
             Boolean nowin = true;
 
-            //for (int x = 1; x < 4; x++)
-            //{
-            //    for (int y = 1; y < 4; y++)
-            //    {
-            //        for (int z = 1; z < 4; z++)
-            //        {
-            //            tester.x = x;
-            //            tester.y = y;
-            //            tester.z = z;
-            //            testee.plotpiece(tester, 1);
-            //            if (testee.checkwin(tester, tester, 1))
-            //            {
-            //                Console.WriteLine("Winning move found");
-            //                return tester;
-            //            }
-            //            else
-            //            {
-            //                nowin = true;
-            //            }
 
-            //        }
-            //    }
-            //}
-            //Random rnd = new Random();
-
-            //int counter = 0;
-            //while (counter < 20)
-            //{
-            //    counter++;
-
-            //    optimal.x = rnd.Next(1, 4);
-            //    optimal.y = rnd.Next(1, 4);
-            //    optimal.z = rnd.Next(1, 4);
-            //    if (testee.validmove(optimal))
-            //    {
-            //        Console.WriteLine("Random Move Found");
-            //        return optimal;
-            //    }
-            //}
-            //Console.WriteLine("Random move not found");
-
-            optimal.z = 4;
             for (int x = 1; x < 5; x++)
             {
                 for (int y = 1; y < 5; y++)
                 {
-                    
+                    for (int z = 1; z < 5; z++)
+                    {
+                        tester.x = x;
+                        tester.y = y;
+                        tester.z = z;
+                        if (board.validmove(tester))
+                        {
+
+                            board.plotpiece(tester, 0);
+                            if (board.checkwin(tester, 0))
+                            {
+                                Console.WriteLine("Winning move found");
+                                return tester;
+                            }
+                            else
+                            {
+                                nowin = true;
+                            }
+                            board.reset(tester, 1);
+                        }
+                    }
+                }
+            }
+            Random rnd = new Random();
+
+            int counter = 0;
+            while (counter < 20)
+            {
+                counter++;
+
+                optimal.x = rnd.Next(1, 5);
+                optimal.y = rnd.Next(1, 5);
+                optimal.z = rnd.Next(1, 5);
+                if (board.validmove(optimal))
+                {
+                    Console.WriteLine("Random Move Found");
+                    return optimal;
+                }
+            }
+            Console.WriteLine("Random move not found");
+
+            
+            for (int z = 1; z < 5; z++)
+            {
+                for (int x = 1; x < 5; x++)
+                {
+                    for (int y = 1; y < 5; y++)
+                    {
+
                         optimal.x = x;
                         optimal.y = y;
-                        
-                        if (testee.validmove(optimal))
+
+                        if (board.validmove(optimal))
                         {
                             Console.WriteLine("Forced move found");
                             return optimal;
                         }
-                    
+
+                    }
                 }
             }
             return optimal;

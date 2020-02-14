@@ -27,6 +27,15 @@ namespace QUBIC_WORKING_PROGRAM
             gametype = qubic.getGametype();
             InitializeComponent();
 
+            if (!gametype)
+            {
+                AIBUTTON.Visible = false;
+                label6.Visible = false;
+            }
+            btnarray[3, 0, 3] = this.R41;
+            btnarray[3, 1, 3] = this.R42;
+            btnarray[3, 2, 3] = this.R43;
+            btnarray[3, 3, 3] = this.R44;
             btnarray[0, 0, 0] = this.O11;
             btnarray[0, 1, 0] = this.O12;
             btnarray[0, 2, 0] = this.O13;
@@ -90,10 +99,6 @@ namespace QUBIC_WORKING_PROGRAM
             btnarray[2, 1, 3] = this.R32;
             btnarray[2, 2, 3] = this.R33;
             btnarray[2, 3, 3] = this.R34;
-            btnarray[3, 0, 3] = this.R41;
-            btnarray[3, 1, 3] = this.R42;
-            btnarray[3, 2, 3] = this.R43;
-            btnarray[3, 3, 3] = this.R44;
 
 
             foreach (Control c in this.Controls)
@@ -115,24 +120,37 @@ namespace QUBIC_WORKING_PROGRAM
         }
         private void aiMOVE()
         {
-            callformove = true;
-            qubic.makemove();
 
+            callformove = true;
+
+            currentplayer = qubic.actingplayer();
+
+            qubic.makemove();
             Move move = new Move();
             move = qubic.getaimove();
-            
+            btnarray[move.x - 1, move.y - 1, move.z - 1].BackColor = Color.Green;
+            Console.WriteLine("turn: " + currentplayer);
+            if (qubic.checkwin(move))
+            {
+                MessageBox.Show("Player " + (currentplayer + 1) + " Wins!");
+                this.Hide();
+                Form menu = new Form2();
+                menu.Show();
 
-
+            }
         }
+
 
         private void moveMake(object sender, MouseEventArgs args)
         {
+
             Move location = new Move();
             Button b = (Button)sender;
             string buttonname = Convert.ToString(b.Name[0]);
-
+            currentplayer = qubic.actingplayer();
             if ((buttonname == "O" || buttonname == "Q" || buttonname == "R" || buttonname == "P"))
             {
+
                 if (callformove)
                 {
                     location.x = (Convert.ToInt32(b.Text[0]) - 48);
@@ -140,8 +158,8 @@ namespace QUBIC_WORKING_PROGRAM
                     location.z = (Convert.ToInt32(b.Text[4]) - 48);
 
                     Boolean validmove = qubic.validmove(location);
-                    currentplayer = qubic.actingplayer();
-                    
+
+                    Console.WriteLine("turn: " + currentplayer);
 
                     if (validmove)
                     {
@@ -160,7 +178,7 @@ namespace QUBIC_WORKING_PROGRAM
                             {
                                 b.BackColor = Color.Red; //red is player 1
                             }
-                           
+
                         }
                         if (qubic.checkwin(location))
                         {
@@ -180,16 +198,16 @@ namespace QUBIC_WORKING_PROGRAM
 
                 }
             }
-            else if (buttonname == "A")
+            else if (buttonname == "A" && currentplayer == 1)
             {
-                MessageBox.Show("aibuttonpressed");
-                aiMOVE();
-                
+                if (gametype)
+                {
+                    aiMOVE();
+                }
             }
-
         }
 
-       
+
 
         private void Button8_Click(object sender, EventArgs e)
         {

@@ -337,7 +337,12 @@ namespace QUBIC_WORKING_PROGRAM
             
         }
 
+        public void reset(Move move,int cplayer)
+        {
+            playfield[move.x - 1, move.y - 1, move.z - 1] = 0;
+            piecesOnEachBoard[cplayer, move.z - 1]++;
 
+        }
     }
 
 
