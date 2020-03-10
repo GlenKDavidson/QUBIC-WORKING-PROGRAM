@@ -40,6 +40,9 @@ namespace QUBIC_WORKING_PROGRAM
                 {
                     for (int z = 1; z < 5; z++)
                     {
+                        Console.WriteLine(x);
+                        Console.WriteLine(y);
+                        Console.WriteLine(z);
                         tester.x = x;
                         tester.y = y;
                         tester.z = z;
@@ -47,8 +50,15 @@ namespace QUBIC_WORKING_PROGRAM
                         {
 
                             board.plotpiece(tester, 0);
-                            if (board.checkwin(tester, 0))
+                            if (board.checkwin(tester, 1))
                             {
+                                board.reset(tester, 1);
+                                Console.WriteLine("Winning move countered");
+                                return tester;
+                            }
+                            else if (board.checkwin(tester, 2))
+                            {
+                                board.reset(tester, 2);
                                 Console.WriteLine("Winning move found");
                                 return tester;
                             }
@@ -79,7 +89,7 @@ namespace QUBIC_WORKING_PROGRAM
             }
             Console.WriteLine("Random move not found");
 
-            
+
             for (int z = 1; z < 5; z++)
             {
                 for (int x = 1; x < 5; x++)
