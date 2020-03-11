@@ -159,7 +159,7 @@ namespace QUBIC_WORKING_PROGRAM
 
                     Boolean validmove = qubic.validmove(location);
 
-                    Console.WriteLine("turn: " + currentplayer);
+                    
 
                     if (validmove)
                     {

@@ -17,6 +17,7 @@ namespace QUBIC_WORKING_PROGRAM
             Console.WriteLine("aiplayer");
             aiMove = minimax(board, qubic);
             qubic.setAIMove(aiMove);
+
             board.plotpiece(aiMove, qubic.actingplayer());
 
         }
@@ -32,7 +33,7 @@ namespace QUBIC_WORKING_PROGRAM
             optimal.z = -1;
             Move tester = new Move();
             Boolean nowin = true;
-
+            int heuristic = 0;
 
             for (int x = 1; x < 5; x++)
             {
@@ -50,26 +51,35 @@ namespace QUBIC_WORKING_PROGRAM
                         {
 
                             board.plotpiece(tester, 0);
+
+                            board.reset(tester, 0);
+                            
                             if (board.checkwin(tester, 1))
                             {
                                 board.reset(tester, 1);
                                 Console.WriteLine("Winning move countered");
-                                return tester;
+                                heuristic = 5;
                             }
-                            else if (board.checkwin(tester, 2))
-                            {
-                                board.reset(tester, 2);
-                                Console.WriteLine("Winning move found");
-                                return tester;
-                            }
-                            else
-                            {
-                                nowin = true;
-                            }
+
+
+                            board.plotpiece(tester, 1);
                             board.reset(tester, 1);
+                            if (board.checkwin(tester, 0))
+                            {
+
+                                Console.WriteLine("Winning move found");
+                                heuristic = 10;
+                            }
+                            if (heuristic == 10) {
+                                return tester;
+                            }
+                           
                         }
                     }
                 }
+            }
+            if (heuristic != 0) {
+                return tester;
             }
             Random rnd = new Random();
 
