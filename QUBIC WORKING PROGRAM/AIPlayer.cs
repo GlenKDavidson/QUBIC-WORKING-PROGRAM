@@ -49,40 +49,45 @@ namespace QUBIC_WORKING_PROGRAM
                         tester.z = z;
                         if (board.validmove(tester))
                         {
-
-                            board.plotpiece(tester, 0);
-
-                            board.reset(tester, 0);
-                            
-                            if (board.checkwin(tester, 1))
-                            {
-                                board.reset(tester, 1);
-                                Console.WriteLine("Winning move countered");
-                                heuristic = 5;
-                            }
-
-
                             board.plotpiece(tester, 1);
-                            board.reset(tester, 1);
                             if (board.checkwin(tester, 0))
                             {
-
+                                board.reset(tester, 1);
                                 Console.WriteLine("Winning move found");
                                 heuristic = 10;
-                            }
-                            if (heuristic == 10) {
                                 return tester;
                             }
-                           
+
+                            board.reset(tester, 1);
+                            board.plotpiece(tester, 0);
+                            if (board.checkwin(tester, 1))
+                            {
+                                board.reset(tester, 0);
+                                Console.WriteLine("Winning move countered");
+                                heuristic = 5;
+                                optimal.x = tester.x;
+                                optimal.y = tester.y;
+                                optimal.z = tester.z;
+
+                            }
+                            board.reset(tester, 0);
+
                         }
                     }
                 }
             }
-            if (heuristic != 0) {
-                return tester;
-            }
-            Random rnd = new Random();
 
+
+            if (heuristic == 5)
+            {
+                return optimal;
+            }
+
+            if ()
+            {
+            }
+
+            Random rnd = new Random();
             int counter = 0;
             while (counter < 20)
             {
@@ -100,25 +105,7 @@ namespace QUBIC_WORKING_PROGRAM
             Console.WriteLine("Random move not found");
 
 
-            for (int z = 1; z < 5; z++)
-            {
-                for (int x = 1; x < 5; x++)
-                {
-                    for (int y = 1; y < 5; y++)
-                    {
 
-                        optimal.x = x;
-                        optimal.y = y;
-
-                        if (board.validmove(optimal))
-                        {
-                            Console.WriteLine("Forced move found");
-                            return optimal;
-                        }
-
-                    }
-                }
-            }
             return optimal;
         }
 
