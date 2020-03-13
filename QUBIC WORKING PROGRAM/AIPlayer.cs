@@ -20,6 +20,7 @@ namespace QUBIC_WORKING_PROGRAM
             qubic.setAIMove(aiMove);
 
             board.plotpiece(aiMove, qubic.actingplayer());
+
             incrementTurns();
         }
 

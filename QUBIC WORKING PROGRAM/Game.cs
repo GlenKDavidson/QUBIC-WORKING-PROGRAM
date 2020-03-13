@@ -14,8 +14,8 @@ namespace QUBIC_WORKING_PROGRAM
         Boolean gametype;
         Move humanmove = new Move();
         Board board;
-        stack<Move> movesCheckStack = new stack<Move>();
-
+        stack<Move> AImovesCheckStack = new stack<Move>();
+        stack<Move> HUMANmovesCheckStack = new stack<Move>();
         Move AIMoveHold = new Move();
 
         public Game(int a)
@@ -50,11 +50,15 @@ namespace QUBIC_WORKING_PROGRAM
             }
             Boolean check = board.validmove(checkedMove);
             humanmove = board.getlastmove();
+            HUMANmovesCheckStack.add(checkedMove);
             return check;
+        }
+        public void AImoveADDER()
+        {
         }
         public Boolean checkwin(Move checkMove)
         {
-            return board.checkwin(checkMove,turn % 2);
+            return board.checkwin(checkMove, turn % 2);
         }
         public int actingplayer()
         {
@@ -80,14 +84,14 @@ namespace QUBIC_WORKING_PROGRAM
             {
                 if (board.validmove(humanmove))
                 {
-                    
+
                     p[actingplayer()].move(board, this);
                     turn++;
                     Console.WriteLine("Turn on human move: " + turn);
                 }
             }
         }
-       
+
 
 
         public Move getlocation()
@@ -103,8 +107,8 @@ namespace QUBIC_WORKING_PROGRAM
             return AIMoveHold;
         }
 
-        
-          
-        
+
+
+
     }
 }
