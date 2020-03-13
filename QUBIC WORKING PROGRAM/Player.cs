@@ -15,7 +15,7 @@ namespace QUBIC_WORKING_PROGRAM
         public abstract void move(Board board, Game qubic);
 
 
-        public void incrementTurns() { }
+        public void incrementTurns() { turnsTaken++; }
         public int getTurns() { return turnsTaken; }
     }
 }

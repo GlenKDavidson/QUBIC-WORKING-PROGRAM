@@ -9,7 +9,8 @@ namespace QUBIC_WORKING_PROGRAM
     class AIPlayer : Player
     {
 
-
+        int[,,] movesToCheck;
+        
 
         public override void move(Board board, Game qubic)
         {
@@ -19,13 +20,20 @@ namespace QUBIC_WORKING_PROGRAM
             qubic.setAIMove(aiMove);
 
             board.plotpiece(aiMove, qubic.actingplayer());
-
+            incrementTurns();
         }
 
+        public void addToCheckArray(Move move)
+        {
+        }
 
         public Move minimax(Board board, Game qubic)
         {
 
+            if (getTurns() == 0)
+            {
+
+            }
 
             Move optimal = new Move();
             optimal.x = -1;
@@ -82,11 +90,70 @@ namespace QUBIC_WORKING_PROGRAM
             {
                 return optimal;
             }
-
-            if ()
+            //first move in corner
+            if (getTurns() < 5)
             {
+                optimal.x = 3;
+                optimal.y = 3;
+                optimal.z = 3;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 3;
+                optimal.y = 0;
+                optimal.z = 3;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 0;
+                optimal.y = 0;
+                optimal.z = 3;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 0;
+                optimal.y = 3;
+                optimal.z = 3;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 0;
+                optimal.y = 0;
+                optimal.z = 0;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 0;
+                optimal.y = 3;
+                optimal.z = 0;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 3;
+                optimal.y = 3;
+                optimal.z = 0;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
+                optimal.x = 3;
+                optimal.y = 0;
+                optimal.z = 3;
+                if (board.validmove(optimal))
+                {
+                    return optimal;
+                }
             }
 
+            //move adjacent to itself
+
+            //random move
             Random rnd = new Random();
             int counter = 0;
             while (counter < 20)

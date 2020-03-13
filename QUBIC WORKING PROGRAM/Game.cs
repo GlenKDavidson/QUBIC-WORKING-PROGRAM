@@ -14,7 +14,7 @@ namespace QUBIC_WORKING_PROGRAM
         Boolean gametype;
         Move humanmove = new Move();
         Board board;
-
+        stack<Move> movesCheckStack = new stack<Move>();
 
         Move AIMoveHold = new Move();
 
